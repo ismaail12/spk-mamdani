@@ -1,12 +1,10 @@
 import { Button, Stack, TextField, Container, Typography, Grid, Alert } from '@mui/material';
-import { resiko } from './fuzzy/tsukamoto';
 import { defuzifikasi } from './fuzzy/mamdani';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
 import Autocomplete from '@mui/material/Autocomplete';
 
 const options = ['Ada', 'Tidak'];
@@ -45,7 +43,6 @@ const Content = () => {
 
   const onSubmit = data => {
     const riwayatFinal = riwayat === "Ada" ? 1 : 0
-    console.log(riwayatFinal);
     const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2)
     setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal));
     handleOpen();

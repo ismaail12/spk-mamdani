@@ -1,9 +1,4 @@
-import { useState, useEffect } from 'react'
-import { resiko } from './fuzzy/tsukamoto'
-import { Container } from '@mui/system'
-import { TextField, Grid, Button, Typography, Autocomplete } from '@mui/material';
-
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Content from './Content';
 
 const theme = createTheme({
