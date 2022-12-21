@@ -1,1 +1,1 @@
-console.log(resiko(128, 103, 170, 24.9, 1).toFixed(2));
+console.log(resiko(128, 103, 170, 24.9, 1));

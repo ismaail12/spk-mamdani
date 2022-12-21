@@ -1,5 +1,6 @@
 import { Button, Stack, TextField, Container, Typography, Grid, Alert } from '@mui/material';
 import { resiko } from './fuzzy/tsukamoto';
+import { defuzifikasi } from './fuzzy/mamdani';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -44,8 +45,9 @@ const Content = () => {
 
   const onSubmit = data => {
     const riwayatFinal = riwayat === "Ada" ? 1 : 0
+    console.log(riwayatFinal);
     const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2)
-    setHasil(resiko(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal).toFixed(2));
+    setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal));
     handleOpen();
   };
   const [riwayat, setRiwayat] = React.useState(options[0]);
@@ -62,6 +64,7 @@ const Content = () => {
             alignItems="center"
             justifyContent="center" spacing={3}>
             <Grid item xs={12}><Typography variant="h4" color="initial" textAlign='center'>Sistem Diagnosa Penyakit Jantung</Typography></Grid>
+            <Grid item xs={12}><Typography variant="h4" color="initial" textAlign='center'>Menggunakan Metode Mamdani Largest of Maximum</Typography></Grid>
             <Grid item xs={10}><Typography variant="body2" color="initial" textAlign='center'>Ismail - 191011400124</Typography></Grid>
             <Grid item xs={10} md={4}>
               <Stack direction='column' gap={2} alignContent="center">

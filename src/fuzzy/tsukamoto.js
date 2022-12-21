@@ -578,16 +578,14 @@ export const resiko = (td, gd, kl, bmi2, rwt) => {
   result.push([a162, z162]);
 
 
-
   result.map(v => {
     if (v[0] !== 0) {
       a += v[0];
       az += v[0] * v[1];
+      console.log(v);
     }
   });
 
   return az/a;
 
 }
-
-// console.log(resiko(128, 103, 170, 24.9, 1));
