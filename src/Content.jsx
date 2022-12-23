@@ -1,5 +1,5 @@
 import { Button, Stack, TextField, Container, Typography, Grid, Alert } from '@mui/material';
-import { defuzifikasi } from './fuzzy/mamdani';
+import { defuzifikasi } from './fuzzy/tsukamoto';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -44,7 +44,7 @@ const Content = () => {
   const onSubmit = data => {
     const riwayatFinal = riwayat === "Ada" ? 1 : 0
     const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2)
-    setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal));
+    setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal).toFixed(2));
     handleOpen();
   };
   const [riwayat, setRiwayat] = React.useState(options[0]);

@@ -81,7 +81,7 @@ const fuzBMI = (batas1, batas2, batas3, x) => {
 
 
 
-export const resiko = (td, gd, kl, bmi2, rwt) => {
+export const defuzifikasi = (td, gd, kl, bmi2, rwt) => {
   const result = []
   let a = 0.0;
   let az = 0.0;
