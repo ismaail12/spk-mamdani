@@ -32,25 +32,25 @@ const Content = () => {
   const handleClose = () => setOpenModal(false);
 
   const tingkatResikoHandler = () => {
-    if (hasil < 0.4) {
-      setTingkatResiko('Kecil')
-    } else if (hasil > 0.4 && hasil < 0.9) {
-      setTingkatResiko('Sedang')
-    } else if (hasil > 0.9) {
-      setTingkatResiko('Besar')
+    if (hasil < 0.5) {
+      setTingkatResiko('Kecil');
+    } else if (hasil > 0.5 && hasil < 0.75) {
+      setTingkatResiko('Sedang');
+    } else if (hasil > 0.75) {
+      setTingkatResiko('Besar');
     }
   }
 
   const onSubmit = data => {
-    const riwayatFinal = riwayat === "Ada" ? 1 : 0
-    const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2)
+    const riwayatFinal = riwayat === "Ada" ? 1 : 0;
+    const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2);
     setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal).toFixed(2));
     handleOpen();
   };
   const [riwayat, setRiwayat] = React.useState(options[0]);
   const [inputRiwayat, setNewRiwayat] = React.useState('');
   useEffect(() => {
-    tingkatResikoHandler()
+    tingkatResikoHandler();
   }), [hasil];
 
   return (
