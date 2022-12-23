@@ -1,5 +1,5 @@
 {
-  "name": "spk-fuzzy",
+  "name": "spk-mamdani",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,10 +13,10 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@hookform/error-message": "^2.0.1",
-    "@mui/material": "^5.10.17",
+    "@mui/material": "^5.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.40.0"
+    "react-hook-form": "^7.41.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
