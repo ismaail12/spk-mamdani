@@ -247,6 +247,14 @@ export const defuzifikasi = (td, gd, kl, bmi2, rwt) => {
   // yaitu dengan cara mengambil derajat keanggotaan tertinggi dari semua agregasi
 
   const inferensiObj = inferensi(td, gd, kl, bmi2, rwt);
-  return Math.max(inferensiObj.kecil, inferensiObj.sedang, inferensiObj.besar);
+  const getName = () => {
+    if (inferensiObj.kecil !== 0 && inferensiObj.kecil > inferensiObj.sedang ) return 'Kecil';
+    if (inferensiObj.sedang !== 0 && inferensiObj.kecil < inferensiObj.sedang && inferensiObj.besar < inferensiObj.sedang ) return 'Sedang';
+    if (inferensiObj.besar !== 0 && inferensiObj.sedang < inferensiObj.besar) return 'Besar';
+  }
+  return {
+    name: getName(),
+    value: Math.max(inferensiObj.kecil, inferensiObj.sedang, inferensiObj.besar)
+  };
 
 }

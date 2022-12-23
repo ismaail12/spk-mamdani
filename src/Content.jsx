@@ -1,5 +1,5 @@
 import { Button, Stack, TextField, Container, Typography, Grid, Alert } from '@mui/material';
-import { defuzifikasi } from './fuzzy/tsukamoto';
+import { defuzifikasi } from './fuzzy/mamdani';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -26,32 +26,22 @@ const Content = () => {
   const [openModal, setOpenModal] = useState(false);
   const { register, handleSubmit } = useForm();
   const [hasil, setHasil] = useState(0);
-  const [tingkatResiko, setTingkatResiko] = useState(0);
+  const [tingkatResiko, setTingkatResiko] = useState('');
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
 
-  const tingkatResikoHandler = () => {
-    if (hasil < 0.5) {
-      setTingkatResiko('Kecil');
-    } else if (hasil > 0.5 && hasil < 0.75) {
-      setTingkatResiko('Sedang');
-    } else if (hasil > 0.75) {
-      setTingkatResiko('Besar');
-    }
-  }
 
   const onSubmit = data => {
     const riwayatFinal = riwayat === "Ada" ? 1 : 0;
     const bmi = data.beratBadan / ((data.tinggiBadan / 100) ** 2);
-    setHasil(defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal).toFixed(2));
+    const defuz = defuzifikasi(data.tekananDarah, data.gulaDarah, data.kolesterol, bmi, riwayatFinal);
+    setHasil(defuz.value.toFixed(2));
+    setTingkatResiko(defuz.name);
     handleOpen();
   };
   const [riwayat, setRiwayat] = React.useState(options[0]);
   const [inputRiwayat, setNewRiwayat] = React.useState('');
-  useEffect(() => {
-    tingkatResikoHandler();
-  }), [hasil];
 
   return (
     <div>
